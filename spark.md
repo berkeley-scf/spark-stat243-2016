@@ -79,6 +79,8 @@ We'll use Spark on an US National Science Foundation (NSF) supercomputer called 
 
 First we need to get the data from the standard filesystem to the HDFS. Note that the file system commands are like standard UNIX commands, but you need to do hadoop fs - in front of the command. At the end of this chunk we'll start the Python interface for Spark. 
 
+These code is also in *prep_spark.sh*.
+
 ```
 export DATADIR=/pylon1/ca4s8fp/paciorek/
 
@@ -122,6 +124,8 @@ Now we'll do some basic manipulations with the Wikipedia dataset, with the goal 
   - then we'll do a map-reduce calculation that involves filtering to the Barack Obama sites, 
   - then do a map step that creates key-value pairs from each record/observation/row and 
   - then do a reduce that counts the number of views by hour, so hour-day will serve as the key. 
+
+This code is also in *process_data.py*.
 
 ```
 lines = sc.textFile('/user/paciorek/data/wikistats-dated')

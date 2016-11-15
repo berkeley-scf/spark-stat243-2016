@@ -65,6 +65,7 @@
 <h1 id="getting-set-up-on-spark-and-the-hdfs">Getting set up on Spark and the HDFS</h1>
 <p>We'll use Spark on an US National Science Foundation (NSF) supercomputer called Bridges, hosted at the Pittsburgh Supercomputing Center. We'll work with a dataset of Wikipedia traffic.</p>
 <p>First we need to get the data from the standard filesystem to the HDFS. Note that the file system commands are like standard UNIX commands, but you need to do hadoop fs - in front of the command. At the end of this chunk we'll start the Python interface for Spark.</p>
+<p>These code is also in <em>prep_spark.sh</em>.</p>
 <pre><code>export DATADIR=/pylon1/ca4s8fp/paciorek/
 
 ls ${DATADIR}
@@ -105,6 +106,7 @@ hadoop fs -copyToLocal /user/paciorek/data/obama-counts ${DATADIR}/</code></pre>
 <li>then do a map step that creates key-value pairs from each record/observation/row and</li>
 <li>then do a reduce that counts the number of views by hour, so hour-day will serve as the key.</li>
 </ul>
+<p>This code is also in <em>process_data.py</em>.</p>
 <pre><code>lines = sc.textFile(&#39;/user/paciorek/data/wikistats-dated&#39;)
 
 lines.getNumPartitions() # 396 partitions, because with gzipped files, data in each file goes into a partition
